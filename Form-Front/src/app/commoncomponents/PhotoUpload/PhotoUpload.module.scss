@@ -1,0 +1,19 @@
+.formLabel {
+  @apply relative rounded-full overflow-hidden cursor-pointer shadow-lg;
+}
+
+.imgStyle {
+  @apply w-32 h-32 border-1 border-dashed border-other-Gray3;
+}
+
+.imgHoverBox {
+  @apply absolute top-0 left-0 bg-[rgba(0,0,0,.65)] w-full h-full opacity-0 flex items-center justify-center;
+}
+
+.uploadIcon {
+  @apply text-primary-Color6 text-h4;
+}
+
+.uploadText {
+  @apply text-primary-Color6;
+}

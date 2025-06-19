@@ -1,0 +1,19 @@
+.fileUploadBox {
+  @apply flex items-center justify-between w-full border-1 border-solid border-[#cccccc] py-[1px] px-2 rounded-md;
+}
+
+.btnLabel {
+  @apply text-smalltext font-medium text-primary-Color2 capitalize;
+}
+
+.uploadIcon {
+  @apply w-4 h-4 min-w-4 min-h-4 xl:w-5 xl:h-5 xl:min-w-5 xl:min-h-5;
+}
+
+.lableUpload {
+  @apply w-full cursor-pointer z-[9];
+}
+
+.fileNotes {
+  @apply text-extrasmalltext font-medium text-primary-Color1 mt-1;
+}

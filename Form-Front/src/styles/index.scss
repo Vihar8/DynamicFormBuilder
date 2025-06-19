@@ -1,0 +1,934 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply m-0 p-0 box-border;
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Target the entire scrollbar */
+::-webkit-scrollbar {
+  width: 7px; /* Adjust width as needed */
+  height: 7px; /* Adjust the height of the scrollbar */
+}
+
+/* Target the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #dbdbdb; /* Color of the scrollbar track */
+}
+
+/* Target the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #888888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+/* Hover state for the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555555; /* Color of the scrollbar thumb when hovered */
+}
+
+body {
+  @apply m-0 overflow-x-hidden;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+
+  /*common loader css*/
+  #appCommonLoader {
+    display: none;
+  }
+
+  .show-loader #appCommonLoader {
+    display: block;
+  }
+
+  .MuiTypography-root {
+    @apply font-sans;
+  }
+
+  .MuiTooltip-tooltip {
+    @apply font-sans text-smalltext;
+  }
+
+  .topArrow {
+    @apply cursor-pointer outline-0 fixed right-2 bg-primary-Color6 bottom-11 z-50 p-2 rounded-full;
+  }
+
+  .arrowImg {
+    @apply bg-none max-w-full h-5 w-auto align-middle;
+  }
+
+  .mainLayout {
+    @apply pt-[95px] lg:pt-[95px] pb-0 min-h-[100vh] bg-primary-Color6;
+  }
+
+  .adminLayout {
+    @apply pt-20 pb-6 min-h-[100vh] bg-[#fdfeff];
+  }
+
+  .fileNames {
+    @apply text-extrasmalltext mt-1 text-message-Success font-medium;
+  }
+
+  .modalHeading {
+    @apply text-h6 font-semibold text-primary-Color2;
+  }
+
+  .MuiFormHelperText-root {
+    @apply mx-0 font-sans;
+  }
+
+  .tableShadow {
+    @apply shadow-badge;
+  }
+  
+  .errorMessage {
+    @apply my-1 text-smalltext text-[#d32f2f];
+  }
+  
+  .MuiInputBase-root.MuiOutlinedInput-root.Mui-focused
+    .MuiOutlinedInput-notchedOutline,
+  .MuiInputBase-root.MuiOutlinedInput-root:hover
+    .MuiOutlinedInput-notchedOutline {
+    @apply border-primary-Color1;
+  }
+
+  .MuiFormLabel-root.MuiInputLabel-root.Mui-focused {
+    @apply text-primary-Color1;
+  }
+
+  .MuiCardContent-root {
+    padding: 1rem !important;
+
+    &:last-child {
+      padding-bottom: 1rem !important;
+    }
+  }
+  
+  .tableCellStyle {
+    @apply font-sans;
+    padding: 0px !important;
+
+    &:last-child {
+      @apply border-b-0;
+    }
+  }
+
+  .tableStyle {
+    @apply relative whitespace-nowrap font-sans first:pl-0 text-primary-Color2 font-bold text-normaltext;
+  }
+
+  .tableBodyStyle {
+    @apply font-sans text-normaltext font-normal first:pl-0 py-3 text-primary-Color2 border-b-0.5 border-solid border-other-Gray7;
+  }
+
+  .tableOdd {
+    &:nth-of-type(odd) {
+      @apply bg-other-Gray4;
+      &:hover {
+        background-color: rgba(31, 70, 125, 0.15) !important;
+      }
+    }
+
+    &:nth-of-type(even) {
+      @apply bg-primary-Color6;
+      &:hover {
+        background-color: rgba(31, 70, 125, 0.15) !important;
+      }
+    }
+  }
+
+  .pageStyle {
+    ul {
+      li {
+        button.Mui-disabled {
+          @apply bg-primary-Color6 opacity-50;
+        }
+
+        button.Mui-selected {
+          background-color: #1f467d !important;
+          color: #ffffff !important;
+        }
+
+        button.MuiPaginationItem-root {
+          @apply bg-primary-Color6;
+        }
+
+        button:hover {
+          background-color: #1f467d !important;
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+
+  .tableAdminStyle {
+    @apply relative whitespace-nowrap;
+    color: #262626 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 3px 10px !important;
+
+    &:not(:last-child)::after {
+      @apply absolute w-[2px] right-0 top-[11px] bg-[#d8d4d4];
+      content: "";
+      height: calc(100% - 20px);
+    }
+  }
+
+  .tableAdminCellStyle {
+    @apply border-0.5 border-solid border-other-Gray7 whitespace-nowrap font-sans;
+    font-size: 13px !important;
+    color: #262626 !important;
+    padding: 6px 10px !important;
+  }
+
+  .btnStyle {
+    @apply text-normaltext capitalize whitespace-nowrap;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+  }
+
+  .secondaryBtn {
+    @apply text-primary-Color2 border-primary-Color2;
+   
+    &:hover{
+        @apply text-primary-Color2 border-primary-Color2 bg-[#FFFFFF];
+    }
+  }
+
+  .roundedBtn {
+    @apply rounded-[6rem] py-1 px-10;
+  }
+
+  .MuiTableCell-root {
+    @apply font-sans;
+  }
+
+  .rmdp-range,
+  .rmdp-day.rmdp-selected span:not(.highlight),
+  .rmdp-arrow-container:hover {
+    @apply bg-primary-Color1;
+  }
+
+  .rmdp-week-day {
+    @apply text-primary-Color1;
+  }
+
+  .rmdp-arrow {
+    @apply border-primary-Color1;
+  }
+
+  .rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+    @apply bg-primary-Color1 bg-opacity-70;
+  }
+
+  .rmdp-day.rmdp-today span {
+    @apply bg-primary-Color5;
+  }
+
+  .viewIcons {
+    @apply text-message-Info mr-3;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+
+  .editIcons {
+    @apply text-message-Success mr-3;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+
+  .deleteIcons {
+    @apply text-message-Error;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+
+  .checkSpacing {
+    span.MuiCheckbox-sizeMedium {
+      @apply pt-0 pb-0;
+    }
+  }
+
+  .buttonStyle {
+    @apply text-smalltext capitalize h-7;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    min-width: auto !important;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 20px 25px -5px #0000001a,
+        0 8px 10px -6px #0000001a;
+    }
+  }
+
+  .rightSection {
+    @apply mt-3 sm:mt-0 flex items-end justify-end;
+  }
+
+  .addCardHeadingSeparate {
+    @apply flex items-center justify-between;
+  }
+
+  .addCardContents {
+    padding: 1.25rem 1rem 1rem !important;
+  }
+
+  .addCardMain {
+    @apply shadow-card mb-4;
+  }
+
+  .addPageTitle {
+    @apply border-b-1 bg-[#f9fafb] px-4 py-2 font-bold text-normaltext ;
+  }
+
+  .addPageTitle1 {
+    @apply border-b-1 bg-[#f9fafb] px-4 py-2 font-semibold text-sm ;
+  }
+
+  .gridMargin {
+    @apply mb-5 items-start;
+  }
+
+  .columnSeparate {
+    @apply grid grid-cols-1 gap-5;
+  }
+
+  .btnSeparate {
+    @apply flex items-center justify-center gap-3;
+  }
+
+  .lableStar {
+    @apply text-message-Error ml-1;
+  }
+
+  .headingSeparate {
+    @apply flex items-center justify-between mb-3;
+  }
+
+  .MuiSlider-colorSecondary {
+    @apply text-other-Gray1 h-[2px];
+  }
+
+  .checkboxLabel {
+    .MuiFormControlLabel-label {
+      @apply text-smalltext md:text-normaltext font-sans text-other-Gray1;
+      word-break: break-word;
+    }
+  }
+
+  .signUpcheckboxLabel {
+    .MuiFormControlLabel-label {
+      @apply text-smalltext font-sans text-other-Gray1;
+      word-break: break-word;
+    }
+  }
+
+  .checkSpacing {
+    span.MuiCheckbox-sizeSmall {
+      @apply pt-0 pb-0 pl-0;
+    }
+  }
+
+  .mobileBox {
+    .MuiInputBase-fullWidth {
+      @apply pl-0;
+    }
+  }
+
+  .otpBox {
+    .MuiInputBase-fullWidth {
+      @apply pr-0;
+
+      .MuiIconButton-sizeMedium {
+        @apply pr-0;
+      }
+    }
+  }
+
+  .MuiButton-containedSuccess {
+    @apply bg-primary-Color1;
+
+    &:hover {
+      @apply bg-primary-Color1;
+    }
+  }
+
+  .MuiButton-containedInfo {
+    background-color: #8c8c8c;
+
+    &:hover {
+      background-color: #636161;
+    }
+  }
+
+  .MuiPopper-root-MuiAutocomplete-popper {
+    z-index: 9999 !important;
+  }
+
+  .MuiInputLabel-formControl,
+  .MuiButtonBase-root,
+  .MuiStepLabel-label,
+  .MuiStepIcon-text,
+  .MuiInputBase-root {
+    @apply font-sans;
+  }
+
+  .MuiStepIcon-root.Mui-completed {
+    @apply text-message-Success;
+  }
+
+  .MuiStepIcon-root.Mui-active {
+    @apply text-primary-Color1;
+  }
+
+  .backBtn {
+    @apply bg-[#FCFCFC] border-[#DEDEDE] text-primary-Color2;
+
+    &:hover {
+      @apply bg-[#ececec];
+    }
+  }
+
+  .MuiButton-startIcon {
+    @apply mr-1;
+  }
+
+  .btnCapital {
+    @apply capitalize;
+  }
+
+
+  .horizontalDivider{
+    @apply w-full h-px bg-[#C4C5CF] my-5;
+  }
+  
+  .submitButton {
+    @apply bg-[#1F467D] text-primary-Color6 hover:bg-[#16355E] border-1 border-primary-Color1 rounded-full py-2 px-10;
+  }
+  .containSpacing {
+    @apply my-8;
+  }
+
+  .pageHeadings {
+    @apply mb-6 text-subtitle2 font-medium text-primary-Color2;
+  }
+
+  .MuiAutocomplete-root .MuiAutocomplete-inputRoot {
+    @apply text-normaltext font-sans;
+    padding-right: 0px !important;
+  }
+
+  .MuiInputBase-input.MuiOutlinedInput-input {
+    height: 20px;
+    @apply text-normaltext font-sans;
+  }
+
+  .MuiOutlinedInput-root.Mui-disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .MuiButton-outlined.MuiButton-outlinedSuccess,
+  .MuiButton-outlined.MuiButton-outlinedWarning {
+    @apply bg-primary-Color6;
+  }
+
+  .MuiAutocomplete-listbox .MuiAutocomplete-option {
+    @apply text-normaltext font-sans;
+  }
+
+  .MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused {
+    background-color: rgba(31, 70, 125, 0.15) !important;
+  }
+
+  .MuiButtonBase-root.MuiRadio-root.Mui-checked,
+  .MuiButtonBase-root.MuiCheckbox-root.Mui-checked,
+  .MuiButtonBase-root.MuiCheckbox-root.MuiCheckbox-indeterminate {
+    @apply text-primary-Color1;
+  }
+
+  .searchTextBox {
+    div {
+      &::before {
+        border-bottom: 0 !important;
+      }
+      &::after {
+        border-bottom: 0 !important;
+      }
+    }
+    input {
+      @apply h-[55px];
+    }
+    .MuiAutocomplete-endAdornment {
+      @apply hidden;
+    }
+  }
+
+  .searchAutoBox {
+    input {
+      @apply h-[59px];
+    }
+  }
+
+  .searchMultiBox {
+    div.MuiAutocomplete-inputRoot {
+      padding: 1px 9px !important;
+    }
+  }
+
+  // start menu css
+  nav .nav-content {
+    @apply flex items-center justify-center w-full;
+
+    .links {
+      @apply mr-auto flex gap-1 xl:gap-8;
+    }
+  }
+
+  .nav-content .links li {
+    @apply list-none m-0 leading-[30px] lg:flex;
+
+    a {
+      @apply flex items-center text-primary-Color2 border-b-2 border-transparent text-normaltext font-medium p-2 xl:py-1 xl:px-2;
+      transition: all 0.3s ease;
+
+      &:hover {
+        @apply bg-[#F3F3F3] border-b-2 rounded-sm border-solid border-primary-Color1;
+      }
+    }
+
+    a.activeMenu {
+      @apply bg-[#F3F3F3] border-b-2 rounded-sm border-solid border-primary-Color1;
+    }
+
+    a.nav-login {
+      @apply bg-transparent border-b-0;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-content .links li.lg:hidden {
+        display: none !important;
+      }
+    }
+
+    nav .nav-content {
+      @apply flex items-center justify-center w-full;
+    
+      .links {
+        @apply mr-auto flex flex-col lg:flex-row gap-1 xl:gap-8;
+      }
+    }
+    
+    .nav-content .links li {
+      @apply list-none m-0 leading-[30px] flex;
+    
+      a {
+        @apply flex items-center text-primary-Color2 border-b-2 border-transparent text-normaltext font-medium p-2 xl:py-1 xl:px-2;
+        transition: all 0.3s ease;
+    
+        &:hover {
+          @apply bg-[#F3F3F3] border-b-2 rounded-sm border-solid border-primary-Color1;
+        }
+      }
+    }
+
+    label {
+      @apply hidden items-center text-primary-Color2 text-normaltext xl:text-mediumtext font-medium py-4 px-2;
+      transition: all 0.3s ease;
+
+      &:hover {
+        @apply text-primary-Color1;
+      }
+    }
+  }
+
+  .eyesIcon {
+    @apply text-primary-Color1 mt-2;
+  }
+
+  .menu-icon {
+    @apply text-primary-Color2 text-mediumtext text-right hidden cursor-pointer leading-[70px] w-[70px];
+  }
+
+  .wrapper input[type="checkbox"] {
+    @apply hidden;
+  }
+
+  /* Dropdown Menu code start */
+  .nav-content .links ul {
+    @apply absolute bg-primary-Color6 top-[100px] text-primary-Color2 z-10 opacity-0 invisible;
+  }
+
+  .nav-content .links li:hover > ul {
+    @apply xl:shadow-modal rounded-sm top-[78px] xl:top-[80px] opacity-100 visible;
+    transition: all 0.3s ease;
+  }
+
+  .nav-content .links ul li a {
+    @apply text-primary-Color2 block w-full rounded-none leading-7;
+  }
+
+  .nav-content .links ul ul {
+    @apply absolute top-0;
+    right: calc(-100% + 8px);
+  }
+
+  .nav-content .links ul li {
+    @apply relative;
+  }
+
+  .nav-content .links ul li:hover ul {
+    @apply top-0;
+  }
+
+  .subMenu {
+    width: auto !important;
+    li {
+      a {
+        padding: 8px 18px !important;
+      }
+    }
+  }
+
+  .dashIcons {
+    @apply mr-2 text-other-Gray5 lg:hidden;
+  }
+
+  /* Responsive code start */
+  @media screen and (max-width: 1279px) {
+    .wrapper nav {
+      @apply max-w-full p-0;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    .wrapper .menu-icon {
+      @apply block;
+    }
+
+    .wrapper #show-menu:checked ~ .menu-icon i::before {
+      content: "\f00d";
+    }
+    nav .nav-content .links {
+      @apply block shadow-modal fixed bg-primary-Color6 h-full w-full pb-[100px] top-[94px] right-[-100%] mr-0 max-w-[350px] overflow-y-auto;
+      transition: all 0.3s ease;
+    }
+
+    nav #show-menu:checked ~ .nav-content .links {
+      @apply right-0;
+    }
+
+    .nav-content .links li a,
+    .nav-content .links li label {
+      @apply block leading-5 cursor-pointer border-b-1 rounded-none border-gray-300 text-primary-Color2 text-normaltext py-3 px-4;
+    }
+
+    .nav-content .links li a.desktop-link {
+      @apply hidden;
+    }
+
+    /* dropdown responsive code start */
+    .nav-content .links ul,
+    .nav-content .links ul ul {
+      @apply static opacity-100 visible bg-none max-h-0 overflow-hidden;
+    }
+
+    .nav-content .links #show-features:checked ~ ul,
+    .nav-content .links #show-services:checked ~ ul,
+    .nav-content .links #show-items:checked ~ ul {
+      @apply max-h-screen;
+    }
+
+    .nav-content .links ul li {
+      @apply m-0;
+    }
+
+    .nav-content .links ul li a {
+      @apply text-normaltext leading-7;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .wrapper nav {
+      @apply py-0 px-[10px];
+    }
+  }
+  // end menu css
+
+  .MuiTabs-root {
+    @apply min-h-10;
+  }
+
+  .MuiTab-fullWidth {
+    @apply text-smalltext md:text-normaltext min-h-10 h-10 font-normal font-sans mr-3 capitalize border-b-0 text-primary-Color2 rounded-sm bg-primary-Color6;
+    border: 1px solid #cfcfcf !important;
+
+    &:last-child {
+      @apply mr-0;
+    }
+  }
+
+  .MuiTab-fullWidth.Mui-selected {
+    @apply bg-primary-Color1 text-primary-Color6;
+    border: 1px solid #1f467d !important;
+  }
+
+  .MuiTabs-indicator {
+    @apply h-0;
+  }
+
+  .divider {
+    @apply flex items-center text-center m-0 text-primary-Color2 text-mediumtext capitalize font-normal;
+
+    &::after {
+      @apply flex-1 border-b-1 border-other-Gray6;
+      content: "";
+    }
+
+    &::before {
+      @apply flex-1 border-b-1 border-other-Gray6;
+      content: "";
+    }
+  }
+
+  .divider:not(:empty)::before {
+    @apply mr-2;
+  }
+
+  .divider:not(:empty)::after {
+    @apply ml-2;
+  }
+
+  .errorName {
+    @apply text-message-Error;
+  }
+
+  // start custom radio css
+  .custom-radio {
+    @apply ml-0 mr-3 mt-[6px] relative;
+  }
+
+  .custom-radio .MuiRadio-root {
+    @apply hidden;
+  }
+
+  .custom-radio .MuiFormControlLabel-label {
+    @apply py-[6px] px-3 text-normaltext border-1 cursor-pointer border-solid border-other-Gray6 rounded-full bg-primary-Color6 text-primary-Color2;
+    transition: all 0.3s;
+  }
+
+  .custom-radio .Mui-checked + .MuiFormControlLabel-label {
+    @apply text-primary-Color6 bg-primary-Color1 border-primary-Color1;
+  }
+  // end custom radio css
+
+  // start custom checkbox css
+  .custom-checkbox {
+    @apply ml-0 mr-3 mt-[6px] relative;
+  }
+
+  .custom-checkbox .MuiCheckbox-root {
+    @apply hidden;
+  }
+
+  .custom-checkbox .MuiFormControlLabel-label {
+    @apply py-[6px] px-3 text-normaltext border-1 cursor-pointer border-solid border-other-Gray6 rounded-full bg-primary-Color6 text-primary-Color2;
+    transition: all 0.3s;
+  }
+
+  .custom-checkbox.checked .MuiFormControlLabel-label {
+    @apply text-primary-Color6 bg-primary-Color1 border-primary-Color1;
+  }
+  // end custom checkbox css
+
+  .graphDropdown {
+    .MuiFormControl-root {
+      .MuiOutlinedInput-root {
+        @apply py-[2px] pl-0;
+        input {
+          @apply text-smalltext;
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+        }
+        .MuiAutocomplete-endAdornment {
+          right: -6px;
+        }
+        .MuiOutlinedInput-notchedOutline {
+          @apply border-0;
+        }
+      }
+    }
+  }
+
+  /* Start Sidebar */
+  .sidebarsMenu {
+    a.ps-menu-button {
+      @apply px-[10px] h-10;
+    }
+
+    .ps-menu-icon {
+      @apply mr-1 w-6 min-w-6;
+    }
+
+    .ps-submenu-expand-icon {
+      @apply mr-3 text-other-Gray6;
+
+      span {
+        @apply w-[7px] h-[7px];
+      }
+    }
+
+    .ps-submenu-expand-icon.ps-open {
+      @apply mt-[-5px];
+    }
+  }
+
+  .sidebarSubMenu {
+    a.ps-menu-button {
+      @apply px-5 h-10 relative text-primary-Color2;
+
+      .ps-menu-label {
+        @apply pl-5;
+      }
+
+      &::after {
+        @apply absolute w-2 h-[2px] bg-other-Gray6;
+        content: "";
+      }
+    }
+  }
+
+  .sidebarHideSubMenu {
+    a.ps-menu-button {
+      @apply pl-4 pr-5;
+    }
+
+    .ps-menu-icon {
+      @apply w-9 min-w-9 text-[15px];
+    }
+
+    .ps-submenu-expand-icon {
+      @apply hidden;
+    }
+  }
+
+  .sidebarCollapse.ps-collapsed {
+    width: 76px !important;
+    min-width: 76px !important;
+    box-shadow: 0px 9px 10px 0px rgba(0, 0, 0, 0.16);
+    @media (max-width: 767px) {
+      // left: 0px !important;
+      top: 57px !important;
+    }
+  }
+
+  .sidebarNotCollapse {
+    width: 205px !important;
+    min-width: 205px !important;
+    box-shadow: 0px 9px 10px 0px rgba(0, 0, 0, 0.16);
+    @media (max-width: 767px) {
+      left: 0px !important;
+      top: 57px !important;
+    }
+  }
+
+  .activeMenuItem {
+    a.ps-menu-button {
+      @apply text-primary-Color1 font-bold;
+      &::after {
+        @apply bg-primary-Color1;
+      }
+    }
+  }
+
+  .activeMainMenuItem {
+    @apply bg-[#F3F3F3] border-r-4 border-primary-Color1 text-primary-Color2 font-bold;
+    a.ps-menu-button:hover {
+      @apply bg-inherit;
+    }
+    .ps-submenu-expand-icon {
+      @apply text-primary-Color2;
+    }
+  }
+
+  .ps-menu-button {
+    &:hover {
+      background-color: rgba(31, 70, 125, 0.15) !important;
+    }
+  }
+  /* End Sidebar */
+
+// start common modal css
+.modalHeadingDivide {
+    @apply flex flex-row justify-between items-start mb-0 px-6 py-4 border-b-1 border-other-Gray5;
+    }
+
+    .modalTitle {
+    @apply text-subtitle2 font-semibold text-left leading-7;
+    }
+
+    .modalCloseIcon {
+    @apply text-primary-Color2 cursor-pointer;
+    }
+
+    .modalContent {
+    @apply px-6 py-5;
+    }
+
+    .modalFooter {
+    @apply px-6 py-4 border-t-1 border-other-Gray5;
+    }
+    // end common modal css
+}
+
+.iconButton {
+    @apply text-lg capitalize h-7;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    min-width: auto !important;
+    // background: #1f467d ;
+    // color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 20px 25px -5px #0000001a,
+        0 8px 10px -6px #0000001a;
+    }
+}
+.notification-icon{
+    position: relative;
+}
+.notification-icon::after {
+    @apply bg-message-Error text-white w-5 h-5 text-smalltext flex justify-center rounded-xl;
+    content:'1';
+    align-items: center;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    
+}
+
+.eyeIcon {
+    @apply text-lg text-other-Gray6;
+}

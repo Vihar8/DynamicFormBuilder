@@ -1,0 +1,31 @@
+.Container {
+  @apply container mx-auto px-4 max-w-[97%] xl:max-w-[94%];
+
+  @media (min-width: 1820px) {
+    max-width: 1720px;
+  }
+
+  @media (min-width: 2100px) {
+    max-width: 1900px;
+  }
+
+  @media (min-width: 2300px) {
+    max-width: 2100px;
+  }
+}
+
+.ContainerAdmin {
+  @apply container mx-auto px-4;
+
+  @media (min-width: 1820px) {
+    max-width: 1720px;
+  }
+
+  @media (min-width: 2100px) {
+    max-width: 1900px;
+  }
+
+  @media (min-width: 2300px) {
+    max-width: 2100px;
+  }
+}

@@ -1,0 +1,11 @@
+.page_title {
+  @apply text-normaltext text-primary-Color2 font-semibold capitalize;
+}
+
+.lable_title {
+  @apply text-normaltext text-primary-Color1 font-semibold capitalize;
+}
+
+.breadcumSeparate {
+    @apply flex gap-x-[6px] items-center;
+}

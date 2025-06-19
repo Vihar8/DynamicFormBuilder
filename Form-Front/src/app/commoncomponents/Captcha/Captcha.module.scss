@@ -1,0 +1,11 @@
+.resetBtn {
+  @apply text-primary-Color4 text-normaltext font-normal cursor-pointer;
+}
+
+.validText {
+  @apply mt-1 text-message-Success text-smalltext font-medium;
+}
+
+.invalidText {
+  @apply mt-1 text-message-Error text-smalltext font-medium;
+}

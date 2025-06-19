@@ -1,0 +1,23 @@
+.update {
+    @apply bg-message-Success text-primary-Color6;
+}
+
+.delete {
+    @apply bg-message-Error text-primary-Color6;
+}
+  
+.AvatarBox {
+    @apply px-5 pt-7 pb-2
+}
+.modalAvatar {
+    @apply w-[60px] h-[60px] min-w-[60px] min-h-[60px] text-[1.75rem];
+}
+  
+.modalContent {
+    @apply text-mediumtext font-bold text-center text-primary-Color2;
+}
+  
+.modalActions {
+    @apply px-5 pb-5;
+}
+  

@@ -1,0 +1,24 @@
+.radiocard {
+  @apply flex items-center border-1 border-solid border-other-Gray3 rounded-lg p-[10px] cursor-pointer;
+  transition: border-color 0.3s;
+}
+
+.radiocard.selected {
+  @apply border-primary-Color1 border-2;
+}
+
+.radiocardcontent {
+  @apply flex items-center flex-grow justify-between;
+}
+
+.radiocardicon {
+  @apply min-w-12 w-12;
+}
+
+.radiocardtitle {
+  @apply text-normaltext font-bold mb-1;
+}
+
+.radiocarddescription {
+  @apply text-smalltext font-normal text-other-Gray6;
+}

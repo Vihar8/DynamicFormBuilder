@@ -1,0 +1,19 @@
+.badgedefault {
+  @apply py-1 px-1 tracking-default text-extrasmalltext capitalize font-medium inline-flex justify-center text-center leading-3 rounded-default;
+}
+
+.info {
+  @apply bg-message-Info text-primary-Color6;
+}
+
+.warning {
+  @apply bg-message-Warning text-primary-Color6;
+}
+
+.active {
+  @apply bg-message-Success text-primary-Color6;
+}
+
+.deactive {
+  @apply bg-message-Error text-primary-Color6;
+}

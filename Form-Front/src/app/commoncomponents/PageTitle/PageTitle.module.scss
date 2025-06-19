@@ -1,0 +1,8 @@
+.pageHeadings {
+  @apply h-36 flex items-center justify-center;
+  background: linear-gradient(90deg, #0398af 0%, #69ce66 92.82%);
+}
+
+.headings {
+  @apply font-bold capitalize text-h4 lg:text-h3 lg:leading-120 text-primary-Color6 text-center;
+}

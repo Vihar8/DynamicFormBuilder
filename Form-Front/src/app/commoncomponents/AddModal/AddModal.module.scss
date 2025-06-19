@@ -1,0 +1,4 @@
+.addModalBox {
+  @apply absolute focus-visible:outline-none top-1/2 left-1/2 w-full lg:w-1/2 max-h-full overflow-x-hidden overflow-y-auto bg-primary-Color6 py-5 px-5 rounded-2xl;
+  transform: translate(-50%, -50%);
+}

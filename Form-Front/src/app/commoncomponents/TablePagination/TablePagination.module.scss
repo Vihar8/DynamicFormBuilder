@@ -1,0 +1,11 @@
+.paginationLeft {
+  @apply flex items-center flex-wrap;
+}
+
+.paginationRight {
+  @apply flex items-center justify-start sm:justify-end;
+}
+
+.gotoText {
+  @apply flex-initial text-primary-Color1;
+}
