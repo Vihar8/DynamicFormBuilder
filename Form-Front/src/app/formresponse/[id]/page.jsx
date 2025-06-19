@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+// import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { formresponses } from "../../../done/common";
 import { StatusCode } from "../../../utils/commonEnum";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function FormResponsePage() {
-    const { id } = useParams(); // dynamic form_id
+    const { id } = useSearchParams(); // dynamic form_id
     const [responses, setResponses] = useState([]);
     const [loading, setLoading] = useState(true);
 
