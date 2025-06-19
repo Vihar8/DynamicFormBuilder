@@ -29,7 +29,7 @@ export default function FormResponsePage() {
         fetchResponses();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Loading..</p>;
 
     return (
         <>
