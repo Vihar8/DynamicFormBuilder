@@ -90,7 +90,7 @@ const Footer = () => {
       <div className={`${classes.footerBottombg}`}>
         <Container>
           <p className={`${classes.copyrightText}`}>
-            Copyright &copy; {getCurrentYear()} SUMAN TYRES.
+            Copyright &copy; {getCurrentYear()} DYNAMIC FORM BUILDER.
             All rights reserved
           </p>
         </Container>

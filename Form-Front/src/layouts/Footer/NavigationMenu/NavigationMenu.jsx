@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const NavigationMenu = () => {
   const navMenu = [
-    { id: 1, to: "/guaranteewarranty", label: "Guarantee Warranty" },
-    { id: 2, to: "/aboutus", label: "About Us" },
-    { id: 3, to: "/Contactus", label: "Contact Us" },
+    { id: 1, to: "/", label: "Guarantee Warranty" },
+    { id: 2, to: "/", label: "About Us" },
+    { id: 3, to: "/", label: "Contact Us" },
     // { id: 4, to: "/termsconditions", label: "Terms & Conditions" },
     // { id: 5, to: "/privacypolicy", label: "Privacy Policy" },
     // { id: 3, to: "/", label: "Policy Update" },
