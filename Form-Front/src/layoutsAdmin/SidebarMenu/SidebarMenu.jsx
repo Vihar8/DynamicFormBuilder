@@ -283,17 +283,17 @@ const SidebarMenu = ({ menuCollapse }) => {
       fullDashboardMenu = adminMenu;
   }
 
-  const LightTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: "rgba(31, 70, 125, 1)",
-      color: "#ffffff",
-      boxShadow: theme.shadows[1],
-      fontSize: 14,
-      padding: "5px 15px",
-    },
-  }));
+ const LightTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+        backgroundColor: "rgba(31, 70, 125, 1)",
+        color: "#ffffff",
+        boxShadow: theme.shadows[1],
+        fontSize: 14,
+        padding: "5px 15px",
+        },
+    }));
 
   return (
     <div className={classes.sidebarSection}>
