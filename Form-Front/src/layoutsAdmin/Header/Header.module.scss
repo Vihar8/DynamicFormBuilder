@@ -1,0 +1,104 @@
+.header {
+  @apply bg-white fixed w-full z-[10] shadow-badge py-1;
+}
+
+.mainlogos {
+  @apply h-[45px] my-[2px];
+}
+
+.headerSeparate {
+  @apply flex items-center justify-between;
+}
+
+.userIconSize {
+  @apply mr-2 mt-1 w-10 h-10 rounded-full text-other-Gray3 ;
+}
+
+.userIconnSize {
+  @apply mr-2 w-10 h-10 rounded-full text-other-Gray3 ;
+}
+.notificationIconSize {
+  @apply mr-10 mt-1 w-7 h-7 text-other-Gray3 ;
+}
+
+.accountBtn {
+  @apply flex flex-row items-center cursor-pointer;
+}
+
+.menuLink {
+  @apply flex flex-row items-center w-full px-4 py-2;
+}
+
+.menuName {
+  @apply text-normaltext text-primary-Color2 whitespace-normal;
+}
+
+.userSeparate {
+  @apply flex flex-col gap-1;
+}
+
+.userName {
+  @apply text-smalltext overflow-hidden whitespace-nowrap text-ellipsis;
+  // max-w-[120px]
+}
+
+.userType {
+  @apply text-extrasmalltext;
+}
+
+.rightSection {
+  @apply flex flex-row gap-5 items-center;
+}
+
+.iconColor {
+  @apply text-other-Gray3;
+}
+
+.quickAddIcons {
+  @apply text-normaltext;
+  min-width: 28px !important;
+}
+
+.logoDivide {
+  @apply flex flex-row items-center gap-5;
+}
+
+.username{
+  @apply font-normal text-lg;
+}
+
+.sectiontitle{
+  @apply font-bold text-2xl mb-3;
+}
+
+.creditamount{
+  @apply font-bold text-mediumtext;
+}
+
+.creditlabel{
+  @apply font-medium text-normaltext text-[#505050];
+}
+
+.servicetitle{
+  @apply font-semibold text-mediumtext;
+}
+
+.servicedescription{
+  @apply font-normal text-xs;
+}
+
+.serviceimg{
+  @apply rounded-lg w-24 h-[82px];
+}
+
+.linkstyle{
+  @apply text-[#1F467D] font-medium text-sm border-b-[2px] border-[#1F467D] w-fit;
+}
+
+.servicecard{
+  @apply border-[1px] border-[#DFE0EB] rounded-[10px];
+}
+
+.creditcard{
+  @apply rounded-tl-xl rounded-tr-xl rounded-bl-xl;
+}

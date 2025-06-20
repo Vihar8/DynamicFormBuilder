@@ -1,0 +1,28 @@
+.sidebarSection {
+  @apply bg-primary-Color6 mt-[57px] flex h-full fixed z-[1000];
+}
+
+.sidebarMain {
+  @apply pb-14;
+
+  div {
+    @apply bg-primary-Color6;
+  }
+}
+
+.sidebarCard {
+  @apply flex flex-col h-full pb-8;
+  // mb-8
+}
+
+.sidebarHeadings {
+  @apply py-0 px-5 mb-2 mt-2 uppercase;
+}
+
+.sidebarSubmenuIcon {
+  @apply mr-3 text-other-Gray3;
+}
+
+.iconSize {
+  @apply w-4;
+}

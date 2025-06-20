@@ -1,0 +1,27 @@
+.notifyMenuLink {
+  @apply flex flex-col items-center w-full px-4 py-2 border-b-1 border-solid border-other-Gray7;
+}
+
+.notifyName {
+  @apply text-smalltext text-primary-Color2 whitespace-normal;
+}
+
+.notifyBody {
+  @apply max-h-[220px] overflow-y-auto overflow-x-hidden border-b-1 border-solid border-other-Gray7;
+}
+
+.notifyHeader {
+  @apply w-full flex flex-row justify-between mb-1;
+}
+
+.notifyTitle {
+  @apply text-smalltext text-primary-Color1 uppercase max-w-[75%] overflow-hidden text-ellipsis whitespace-nowrap;
+}
+
+.notifyDate {
+  @apply text-smalltext text-other-Gray6;
+}
+
+.notifyCount {
+  @apply absolute -top-[10px] text-extrasmalltext bg-message-Error text-primary-Color6 -right-[10px] rounded-full w-5 h-5 flex items-center justify-center flex-wrap;
+}
