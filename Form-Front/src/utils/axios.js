@@ -2,7 +2,7 @@ import axios from "axios";
 import { commonLoader } from "./commonEnum";
 
 const axiosServices = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL  || "https://dynamicformbuilder.onrender.com/api/",
+  baseURL: process.env.NEXT_PUBLIC_API_URL  || "localhost:8000/api/",
 });
 
 // ==============================|| AXIOS - FOR MOCK SERVICES ||============================== //

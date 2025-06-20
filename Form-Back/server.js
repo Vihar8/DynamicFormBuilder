@@ -6,7 +6,7 @@ const apiRouter = require("./src/routes/api.routes");
 
 // Use cors middleware globally
 app.use(cors({
-  origin: "https://dynamicformsbuilder.vercel.app",
+  origin: "http://localhost:3000",
   methods: ["GET", "POST"],
   credentials: true,
 }));
