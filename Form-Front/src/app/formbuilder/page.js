@@ -1616,7 +1616,6 @@ const resetFormAndState = () => {
                 collisionDetection={closestCenter}
                 onDragStart={(event) => setActiveId(event.active.id)}
                 onDragEnd={handleDragEnd}
-                modifiers={[restrictToVerticalAxis]}
               >
                 <SortableContext
                   items={getFieldsForCurrentStep().map((f) => f.id)}
