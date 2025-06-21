@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* In global CSS */
+* {
+  touch-action: manipulation;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}

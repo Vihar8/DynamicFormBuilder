@@ -367,21 +367,50 @@ const SortableField = ({
 };
 
 // Field type components for the draggable toolbox
-const FieldTypeItem = ({ type, label, icon, onDragStart }) => {
+// const FieldTypeItem = ({ type, label, icon, onDragStart }) => {
+//   return (
+//     <div
+//       className="flex items-center gap-2 p-2 border-1 rounded-md bg-white mb-2 cursor-grab"
+//       draggable
+//       // onDragStart={(e) => {
+//       //   e.dataTransfer.setData('fieldType', type);
+//       //   if (onDragStart) onDragStart(type);
+//       // }}
+//       onDragStart={(e) => {
+//         e.dataTransfer.setData('fieldType', type);
+//         if (onDragStart) onDragStart(type);
+//       }}
+//       onTouchStart={() => {
+//         // Store the type for mobile-based drop simulation
+//         if (onDragStart) onDragStart(type);
+//       }}
+//     >
+//       {icon}
+//       <span>{label}</span>
+//     </div>
+//   );
+// };
+
+// components/FieldTypeItem.jsx
+ function FieldTypeItem({ type, label, icon, onDragStart }) {
   return (
     <div
-      className="flex items-center gap-2 p-2 border-1 rounded-md bg-white mb-2 cursor-grab"
+      className="flex items-center gap-2 p-2 border-1 rounded-md bg-white mb-2 cursor-grab select-none"
       draggable
       onDragStart={(e) => {
         e.dataTransfer.setData('fieldType', type);
-        if (onDragStart) onDragStart(type);
+        if (onDragStart) onDragStart(type); // Save type to state
+      }}
+      onTouchStart={() => {
+        if (onDragStart) onDragStart(type); // Touch drag start
       }}
     >
       {icon}
       <span>{label}</span>
     </div>
   );
-};
+}
+
 
 // export default function FormBuilder() {
 //   const {
@@ -1600,7 +1629,7 @@ const resetFormAndState = () => {
             )}
 
             {/* Fields List with Drag and Drop */}
-            <div
+            {/* <div
               className="border-1 rounded-md p-4 text-sm text-gray-700 min-h-[200px]"
               onDrop={handleDrop}
               onDragOver={handleDragOver}
@@ -1641,7 +1670,59 @@ const resetFormAndState = () => {
                 </SortableContext>
                 </div>
               </DndContext>
-            </div>
+            </div> */}
+            <div
+  className="border-1 rounded-md p-4 text-sm text-gray-700 min-h-[200px]"
+  onDrop={handleDrop}
+  onDragOver={handleDragOver}
+  onTouchEnd={() => {
+    // Handle mobile drop
+    if (dragActiveFieldType) {
+      const newField = createNewField(dragActiveFieldType);
+      const updatedFields = [...fields, newField];
+      setFields(updatedFields);
+      formik.setFieldValue('fields', updatedFields);
+      setDragActiveFieldType(null);
+    }
+  }}
+>
+  {fields.length === 0 && (
+    <div className="flex flex-col items-center justify-center h-32 text-gray-500 border-2 border-dashed rounded-lg">
+      <p>Drag and drop fields here or click "Add Field"</p>
+    </div>
+  )}
+
+  <DndContext
+    sensors={sensors}
+    collisionDetection={closestCenter}
+    onDragStart={(event) => setActiveId(event.active.id)}
+    onDragEnd={handleDragEnd}
+    modifiers={[restrictToVerticalAxis]}
+  >
+    <div className="touch-none">
+      <SortableContext
+        items={getFieldsForCurrentStep().map((f) => f.id)}
+        strategy={verticalListSortingStrategy}
+      >
+        {getFieldsForCurrentStep().map((field, idx) => (
+          <SortableField
+            key={field.id}
+            field={field}
+            index={idx}
+            updateField={updateField}
+            removeField={removeField}
+            formType={formType}
+            totalSteps={totalSteps}
+            stepNames={stepNames}
+            errors={formik.errors.fields && formik.errors.fields[idx]}
+            touched={formik.touched.fields && formik.touched.fields[idx]}
+          />
+        ))}
+      </SortableContext>
+    </div>
+  </DndContext>
+</div>
+
           </div>
 
           {/* Field Types Sidebar */}
