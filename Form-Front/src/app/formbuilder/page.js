@@ -8,6 +8,7 @@ import {
   useSensor,
   useSensors,
   DragOverlay,
+  TouchSensor,
 } from '@dnd-kit/core';
 import {
   arrayMove,
@@ -1041,6 +1042,7 @@ export default function FormBuilder() {
 
   const sensors = useSensors(
     useSensor(PointerSensor),
+    useSensor(TouchSensor), 
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
