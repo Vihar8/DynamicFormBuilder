@@ -3,23 +3,24 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { formresponses } from "../../../done/common";
 import { StatusCode } from "../../../utils/commonEnum";
-import { toast, ToastContainer } from "react-toastify";
+import { useSnackbar } from "../../../utils/SnackbarProvider";
 
 export default function FormResponsePage() {
     const { id } = useParams(); // dynamic form_id
     const [responses, setResponses] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const { showSnackbar } = useSnackbar();
+  
 
     const fetchResponses = async () => {
         const response = await formresponses({ form_id: id })
 
         if (response.statusCode === StatusCode.success) {
             setResponses(response.data);
-            toast.success("Form Response Fetched successfully!");
+            showSnackbar("Form Response Fetched successfully!", "success");
         }
         else {
-            toast.error(response.message || "error");
+            showSnackbar(response.message, "error");
         }
     };
 
@@ -32,7 +33,6 @@ export default function FormResponsePage() {
 
     return (
         <>
-            <ToastContainer />
             <div className="overflow-x-auto rounded-lg shadow-md">
                 {responses.length === 0 ? (
                     <div className="text-center text-gray-500 py-10">

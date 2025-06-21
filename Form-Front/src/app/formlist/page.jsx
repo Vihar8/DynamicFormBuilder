@@ -51,13 +51,13 @@ import Breadcrumb from "../../app/commoncomponents/Breadcrumb/Breadcrumb";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import TotalRecords from "../../app/commoncomponents/TablePagination/TotalRecords";
-import { toast, ToastContainer } from "react-toastify";
-import { formdelete, formlist, formpublishstatus, formstatus, publishstatus } from "../../done/common";
+import { formdelete, formlist, formstatus, publishstatus } from "../../done/common";
+import { useSnackbar } from "../../utils/SnackbarProvider";
 
 const FormList = () => {
     // const [isModalOpen, setIsModalOpen] = useState(false);
     // const [selectedFile, setselectedFile] = useState(null);
-
+    const { showSnackbar } = useSnackbar();
     const [pageCount, setPageCount] = useState(0);
     const [paginationSize, setPaginationSize] = useState(10);
     const [selectedPage, setselectedPage] = useState(1);
@@ -130,7 +130,8 @@ const FormList = () => {
                 setPageCount(response?.data?.count?.[0]?.total_page);
             }
         } catch (error) {
-            toast.error(errorData.message || "error");
+            // toast.error(errorData.message || "error");
+            showSnackbar(errorData.message, "error");
         }
     };
 
@@ -171,10 +172,10 @@ const FormList = () => {
         if (response.statusCode === StatusCode.success) {
             setStatusUpdate(response?.data);
             fetchBrandDetails();
-            toast.success("Form Status Updated successfully!");
+            showSnackbar("Form Status Updated successfully!", "success");
         } else {
             commonLoader("hide");
-            toast.error(response.message || "error");
+            showSnackbar(response.message, "error");
         }
     };
 
@@ -186,10 +187,10 @@ const FormList = () => {
         if (response.statusCode === StatusCode.success) {
             setPublishUpdate(response?.data);
             fetchBrandDetails();
-            toast.success("Form Published successfully!");
+            showSnackbar("Form Published successfully!", "success");
         } else {
             commonLoader("hide");
-            toast.error(response.message || "error");
+            showSnackbar(response.message, "error");
         }
     };
 
@@ -236,10 +237,10 @@ const FormList = () => {
                 );
                 setDialogOpen(false); // Close dialog after deletion
                 fetchBrandDetails(); // Refresh list after 
-                toast.success("Form deleted successfully!");
+                showSnackbar("Form deleted successfully", "success");
             }
         } catch (error) {
-            toast.error(error.message || "error");
+            showSnackbar(error.message, "error");
         }
     };
 
@@ -277,7 +278,6 @@ const FormList = () => {
 
     return (
         <>
-            <ToastContainer />
             {/* page heading */}
             <Grid container item xs={12} className="headingSeparate">
                 <Grid item xs={12} sm={4} md={3} lg={1.5}>

@@ -34,14 +34,14 @@ import {
 } from "@mui/material";
 import { publishformurlbyid, submitformclient } from '../../done/common';
 import Breadcrumb from "../../app/commoncomponents/Breadcrumb/Breadcrumb";
-import { toast, ToastContainer } from 'react-toastify';
 import { StatusCode } from '../../utils/commonEnum';
 import InputBox from '../commoncomponents/InputBox/InputBox';
+import { useSnackbar } from '../../utils/SnackbarProvider';
 
 export default function PublishedFormPage() {
   const searchParams = useSearchParams();
   const formSlug = searchParams.get('form');
-
+  const { showSnackbar } = useSnackbar();
   const [formDetails, setFormDetails] = useState(null);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -93,10 +93,10 @@ export default function PublishedFormPage() {
           setFormDetails(null);
         }
       } else {
-        toast.error('Failed to load form');
+      showSnackbar("Failed to load form", "error");
       }
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Failed to fetch form data");
+            showSnackbar(error?.response?.data?.message, "error");
     } finally {
       setLoading(false);
     }
@@ -197,7 +197,7 @@ stepNamesMap[step] = field.stepName;
     if (validateCurrentStep()) {
       setActiveStep((prevStep) => Math.min(prevStep + 1, maxStep));
     } else {
-      toast.error('Please fill in all required fields before proceeding');
+            showSnackbar("Please fill in all required fields before proceeding", "error");
     }
   };
 
@@ -207,7 +207,7 @@ stepNamesMap[step] = field.stepName;
 
   const submitForm = async (values) => {
    if (!validateForm()) {
-      toast.error('Please fill in all required fields');
+            showSnackbar("Please fill in all required fields", "error");
       // Go to the first step with errors
       for (let step = 1; step <= maxStep; step++) {
         const stepFields = fieldsByStep[step] || [];
@@ -250,17 +250,16 @@ stepNamesMap[step] = field.stepName;
     // Send to server
     const result = await submitformclient({ payload });
    if (result.statusCode === StatusCode.success){
-     toast.success('Form submitted successfully!');
+    showSnackbar(result.message, "success");
      setSubmitted(true);
      resetFun();
    }else{
     setSubmitted(false);
-     toast.error(result?.message || "Something went wrong");
+     showSnackbar(result?.message, "error");
    }
   }  catch (error) {
-    console.error('Submission error:', error); // Add this for debugging
     setSubmitted(false);
-    toast.error('Form submission failed.');
+     showSnackbar("Form submission failed.", "error");
   } finally {
     setSubmitting(false);
   }
@@ -754,7 +753,6 @@ stepNamesMap[step] = field.stepName;
 
     return (
       <>
-      <ToastContainer />
         {/* Page heading */}
         <Grid item xs={12} sm={4} md={3} lg={1.5}>
             <Breadcrumb {...empListingdata} />

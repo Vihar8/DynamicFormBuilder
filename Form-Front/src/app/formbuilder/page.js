@@ -22,7 +22,6 @@ import { FaGripVertical, FaPlusCircle } from 'react-icons/fa';
 import { useFormContext } from '../components/FormContext';
 import FormPreview from '../preview/page';
 import { submitform } from '../../done/common';
-import { toast, ToastContainer } from 'react-toastify';
 import { fieldTypeIcons, fileUploadIcon, StatusCode } from '../../utils/commonEnum';
 
 // Component for each draggable field in the form
@@ -942,6 +941,7 @@ const FieldTypeItem = ({ type, label, icon, onDragStart }) => {
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useSnackbar } from "../../utils/SnackbarProvider";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -1030,7 +1030,8 @@ export default function FormBuilder() {
     stepNames,
     setStepNames
   } = useFormContext();
-
+  
+	const { showSnackbar } = useSnackbar();
   // State for filtered fields in stepper mode
   const [currentStepFields, setCurrentStepFields] = useState([]);
 
@@ -1062,7 +1063,7 @@ export default function FormBuilder() {
       try {
         await handleSave(values);
       } catch (error) {
-        console.error('Save error:', error);
+        showSnackbar("Save error:", error);
       } finally {
         setSubmitting(false);
       }
@@ -1111,7 +1112,7 @@ export default function FormBuilder() {
         totalSteps: true,
         stepNames: true
       });
-      toast.error("Please fix validation errors before saving.");
+      showSnackbar("Please fix validation errors before saving.", "error");
       return;
     }
 
@@ -1151,14 +1152,17 @@ export default function FormBuilder() {
       
       if (response.statusCode == StatusCode.success) {
         const result = await response;
-        toast.success(result.message || "Form saved successfully!");
+        showSnackbar(result.message, "success");
+        // toast.success(result.message || "Form saved successfully!");
         resetFormAndState();
       } else {
         const errorData = await response;
-        toast.error(errorData.message || "Failed to save form.");
+      showSnackbar(errorData.message, "error");
+        // toast.error(errorData.message || "Failed to save form.");
       }
     } catch (error) {
-      toast.error("An error occurred while saving the form.");
+      showSnackbar(error.message, "error");
+      // toast.error("An error occurred while saving the form.");
     }
   };
 
@@ -1304,7 +1308,6 @@ const resetFormAndState = () => {
 
   return (
     <>
-      <ToastContainer />
       <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col lg:flex-row gap-6 w-full">
           {/* Form Preview */}

@@ -385,6 +385,8 @@ const FieldTypeItem = ({ type, label, icon, onDragStart }) => {
   );
 };
 
+import { useSnackbar } from "../../../utils/SnackbarProvider";
+
 export default function FormBuilder() {
   const { id } = useParams();
   const prevStepNamesRef = useRef();
@@ -404,6 +406,7 @@ export default function FormBuilder() {
     stepNames,
     setStepNames
   } = useFormContext();
+  const { showSnackbar } = useSnackbar();
 
   // State for filtered fields in stepper mode
   const [currentStepFields, setCurrentStepFields] = useState([]);
@@ -478,7 +481,7 @@ const fetchformdata = async () => {
   } 
     }
   } catch (error) {
-    toast.error(error.message || "error");
+    showSnackbar(error?.message, "error");
   }
 }; 
 
@@ -524,7 +527,7 @@ useEffect(() => {
     const handleSave = async () => {
   // Validate: ensure at least one field exists
   if (fields.length === 0) {
-    toast.error("Please add at least one field to your form before saving.");
+    showSnackbar("Please add at least one field to your form before saving.", "error");
     return; // Exit early, don't proceed with save
   }
 
@@ -554,7 +557,6 @@ useEffect(() => {
     }
 
   try {
-    debugger
     const response = await submitform(dataToSend);
     
      if (response.statusCode == StatusCode.success) {
@@ -563,20 +565,21 @@ useEffect(() => {
         const successMessage = id 
           ? (result.message || "Form updated successfully!") 
           : (result.message || "Form created successfully!");
-        toast.success(successMessage);
+        showSnackbar(successMessage, "success");
             resetFormAndStates();
       } else {
         const errorData = await response;
         const errorMessage = id 
           ? (errorData.message || "Failed to update form.") 
           : (errorData.message || "Failed to save form.");
-        toast.error(errorMessage);
+      showSnackbar(errorMessage, "error");
       }
     } catch (error) {
       const errorMessage = id 
         ? "An error occurred while updating the form." 
         : "An error occurred while saving the form.";
-      toast.error(errorMessage);
+      showSnackbar(errorMessage, "error");
+
     }
   };
 
@@ -726,7 +729,6 @@ const fieldsWithStepNames = React.useMemo(() => {
 
   return (
     <>
-      <ToastContainer />
     <div className="flex flex-col lg:flex-row gap-6 w-full">
      <div className="lg:w-sm bg-white rounded-xl border-1 p-4 shadow-sm">
           <h3 className="text-sm font-medium mb-3">Form Preview</h3>
