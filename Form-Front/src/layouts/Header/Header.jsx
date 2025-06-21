@@ -13,7 +13,7 @@ const Header = () => {
             <img
               className={`${classes.mainlogos}`}
               alt="Logo"
-              src="./docu.jpg"
+              src="./formlogo.png"
             />
           </Link>
 

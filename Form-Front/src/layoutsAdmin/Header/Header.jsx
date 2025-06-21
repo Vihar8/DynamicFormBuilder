@@ -14,7 +14,7 @@ const Header = ({ menuCollapse, setMenuCollapse }) => {
     <header className={`${classes.header}`}>
       <ContainerAdmin classname={`${classes.headerSeparate}`}>
         <div className={`${classes.logoDivide}`}>
-          <img className={`${classes.mainlogos}`} alt="Logo" src="./docu.jpg" />
+          <img className={`${classes.mainlogos}`} alt="Logo" src="./formlogo.png" />
 
           <div className='cursor-pointer' onClick={() => setMenuCollapse(!menuCollapse)}>
             {menuCollapse ? 
