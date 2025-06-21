@@ -1041,8 +1041,8 @@ export default function FormBuilder() {
   const [dragActiveFieldType, setDragActiveFieldType] = useState(null);
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
     useSensor(TouchSensor), 
+    useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
@@ -1616,7 +1616,9 @@ const resetFormAndState = () => {
                 collisionDetection={closestCenter}
                 onDragStart={(event) => setActiveId(event.active.id)}
                 onDragEnd={handleDragEnd}
+                modifiers={[restrictToVerticalAxis]}
               >
+              <div className="touch-none">
                 <SortableContext
                   items={getFieldsForCurrentStep().map((f) => f.id)}
                   strategy={verticalListSortingStrategy}
@@ -1637,6 +1639,7 @@ const resetFormAndState = () => {
                     />
                   ))}
                 </SortableContext>
+                </div>
               </DndContext>
             </div>
           </div>
