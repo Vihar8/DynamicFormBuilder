@@ -14,8 +14,8 @@ const ScrollToTopButton = () => {
   }, []);
 
   const openWhatsApp = () => {
-    const phoneNumber = "+919426636250"; // Replace with your number
-    const message = "Hi, I'm interested in your Products!";
+    const phoneNumber = "+918160302155"; // Replace with your number
+    const message = "Hi, Came from DYNAMIC FORM BUILDER!";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
