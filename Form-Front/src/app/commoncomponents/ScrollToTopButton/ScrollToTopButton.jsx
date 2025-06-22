@@ -31,7 +31,7 @@ const ScrollToTopButton = () => {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            fill="#1f467d"
+            fill="#22C55E"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M12 2L4 10H9V22H15V10H20L12 2Z" />

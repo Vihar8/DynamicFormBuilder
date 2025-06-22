@@ -152,7 +152,7 @@ body {
         }
 
         button.Mui-selected {
-          background-color: #1f467d !important;
+          background-color: #22C55E !important;
           color: #ffffff !important;
         }
 
@@ -161,7 +161,7 @@ body {
         }
 
         button:hover {
-          background-color: #1f467d !important;
+          background-color: #22C55E !important;
           color: #ffffff !important;
         }
       }
@@ -422,7 +422,7 @@ body {
   }
   
   .submitButton {
-    @apply bg-[#1F467D] text-primary-Color6 hover:bg-[#16355E] border-1 border-primary-Color1 rounded-full py-2 px-10;
+    @apply bg-[#22C55E] text-primary-Color6 hover:bg-[#16355E] border-1 border-primary-Color1 rounded-full py-2 px-10;
   }
   .containSpacing {
     @apply my-8;
@@ -688,7 +688,7 @@ body {
 
   .MuiTab-fullWidth.Mui-selected {
     @apply bg-primary-Color1 text-primary-Color6;
-    border: 1px solid #1f467d !important;
+    border: 1px solid #22C55E !important;
   }
 
   .MuiTabs-indicator {
