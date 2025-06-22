@@ -785,7 +785,7 @@ const resetFormAndState = () => {
         <div className="flex flex-col lg:flex-row gap-6 w-full">
           {/* Form Preview */}
           <div className="lg:w-sm bg-white rounded-xl border-1 p-4 shadow-sm">
-            <h3 className="text-sm font-medium mb-3">Form Preview</h3>
+            <h3 className="text-xl font-semibold mb-1">Form Preview</h3>
             <p className="text-xs text-gray-500 mb-4">
               This is a live preview of how your form will look.
             </p>
@@ -1169,7 +1169,7 @@ const resetFormAndState = () => {
 
           {/* Field Types Sidebar */}
           <div className="lg:w-64 bg-white rounded-xl border-1 p-4 shadow-sm">
-            <h3 className="text-sm font-medium mb-3">Field Types</h3>
+            <h3 className="text-xl font-semibold mb-1">Field Types</h3>
             <p className="text-xs text-gray-500 mb-4">
               Drag and drop to add fields to your form
             </p>

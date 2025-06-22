@@ -732,7 +732,7 @@ const fieldsWithStepNames = React.useMemo(() => {
     <>
     <div className="flex flex-col lg:flex-row gap-6 w-full">
      <div className="lg:w-sm bg-white rounded-xl border-1 p-4 shadow-sm">
-          <h3 className="text-sm font-medium mb-3">Form Preview</h3>
+          <h3 className="text-xl font-semibold mb-1">Form Preview</h3>
            <p className="text-xs text-gray-500 mb-4">
           This is a live preview of how your form will look.
         </p>
@@ -907,7 +907,7 @@ const fieldsWithStepNames = React.useMemo(() => {
 
          {/* Fields Header */}
          <div className="flex justify-between items-center mb-2">
-           <h3 className="text-sm font-medium">Form Fields</h3>
+           <h3 className="text-xl font-semibold mb-1">Form Fields</h3>
            <button
              className="flex items-center gap-1 px-3 py-1.5 bg-black text-white text-sm rounded-md"
              onClick={() =>

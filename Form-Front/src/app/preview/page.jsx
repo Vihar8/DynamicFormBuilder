@@ -208,25 +208,6 @@ export default function FormPreview() {
     alert('Preview Complete!');
   };
 
-  // useEffect(() => {
-  // console.log('fields or maxStep changed:', fields, maxStep);
-  // if (fields.length > 0) {
-  // const stepNameMap = {};
-  // fields.forEach(field => {
-  // if (field.step && field.stepName) {
-  // stepNameMap[field.step] = field.stepName;
-  // }
-  // });
-  // const orderedStepNames = [];
-  // for (let i = 1; i <= maxStep; i++) {
-  // orderedStepNames.push(stepNameMap[i] || `Step ${i}`);
-  // }
-  // // setDynamicStepNames(orderedStepNames);
-  // setStepNames(orderedStepNames); // Use orderedStepNames directly instead of dynamicStepNames
-  // }
-  // }, [fields, maxStep]);
-
-
   useEffect(() => {
     if (fields.length > 0) {
       const stepNameMap = {};

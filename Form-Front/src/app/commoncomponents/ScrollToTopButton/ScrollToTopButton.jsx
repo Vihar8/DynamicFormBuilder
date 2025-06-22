@@ -40,12 +40,12 @@ const ScrollToTopButton = () => {
       )}
 
       {/* WhatsApp Button */}
-      <div
+      {/* <div
         className="fixed bottom-24 right-2 z-50 cursor-pointer p-3 bg-green-500 rounded-full shadow-md hover:scale-100 transition"
         onClick={openWhatsApp}
       >
         <img src="./whatsapp-logo.png" alt="WhatsApp" className="w-7 h-7" />
-      </div>
+      </div> */}
     </>
   );
 };
