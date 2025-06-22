@@ -59,7 +59,7 @@ const SortableField = ({
 
   const handleValidationChange = (key, value, checked = null) => {
     const currentValidation = field.validation || {};
-    
+
     if (checked !== null) {
       // For checkbox inputs
       if (checked) {
@@ -103,8 +103,8 @@ const SortableField = ({
             title="Remove Field"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="3 6 5 6 21 6"/>
-              <path d="m19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              <polyline points="3 6 5 6 21 6" />
+              <path d="m19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
             </svg>
           </button>
         </div>
@@ -114,21 +114,19 @@ const SortableField = ({
       <div className="flex border-b bg-gray-50">
         <button
           onClick={() => setActiveTab('basic')}
-          className={`px-4 py-2 text-sm font-medium ${
-            activeTab === 'basic'
+          className={`px-4 py-2 text-sm font-medium ${activeTab === 'basic'
               ? 'text-emerald-500 border-b-2 border-emerald-500 bg-white'
               : 'text-gray-500 hover:text-gray-700'
-          }`}
+            }`}
         >
           Basic
         </button>
         <button
           onClick={() => setActiveTab('validation')}
-          className={`px-4 py-2 text-sm font-medium ${
-            activeTab === 'validation'
+          className={`px-4 py-2 text-sm font-medium ${activeTab === 'validation'
               ? 'text-red-500 border-b-2 border-red-500 bg-white'
               : 'text-gray-500 hover:text-gray-700'
-          }`}
+            }`}
         >
           Validation
         </button>
@@ -392,7 +390,7 @@ const SortableField = ({
 // };
 
 // components/FieldTypeItem.jsx
- function FieldTypeItem({ type, label, icon, onDragStart }) {
+function FieldTypeItem({ type, label, icon, onDragStart }) {
   return (
     <div
       className="flex items-center gap-2 p-2 border-1 rounded-md bg-white mb-2 cursor-grab select-none"
@@ -421,20 +419,20 @@ const validationSchema = Yup.object({
     .required('Form title is required')
     .min(3, 'Form title must be at least 3 characters')
     .max(100, 'Form title must be less than 100 characters'),
-  
+
   formUrl: Yup.string()
-  .required('Form URL is required')
-  .matches(
-    /^(?!.*--)(?!-)(?!.*-$)[a-z0-9-]+$/,
-    'Form URL can only contain lowercase letters, numbers, and hyphens (no spaces or special characters)'
-  )
-  .min(3, 'Form URL must be at least 3 characters')
-  .max(50, 'Form URL must be less than 50 characters'),
-  
+    .required('Form URL is required')
+    .matches(
+      /^(?!.*--)(?!-)(?!.*-$)[a-z0-9-]+$/,
+      'Form URL can only contain lowercase letters, numbers, and hyphens (no spaces or special characters)'
+    )
+    .min(3, 'Form URL must be at least 3 characters')
+    .max(50, 'Form URL must be less than 50 characters'),
+
   formType: Yup.string()
     .required('Form type is required')
     .oneOf(['single', 'stepper'], 'Invalid form type'),
-  
+
   fields: Yup.array()
     .of(
       Yup.object({
@@ -469,13 +467,13 @@ const validationSchema = Yup.object({
       })
     )
     .min(1, 'At least one field is required'),
-  
+
   totalSteps: Yup.number().when('formType', {
     is: 'stepper',
     then: (schema) => schema.min(1, 'At least one step is required').max(10, 'Maximum 10 steps allowed'),
     otherwise: (schema) => schema.nullable()
   }),
-  
+
   stepNames: Yup.array().when('formType', {
     is: 'stepper',
     then: (schema) => schema.of(
@@ -502,8 +500,8 @@ export default function FormBuilder() {
     stepNames,
     setStepNames
   } = useFormContext();
-  
-	const { showSnackbar } = useSnackbar();
+
+  const { showSnackbar } = useSnackbar();
   // State for filtered fields in stepper mode
   const [currentStepFields, setCurrentStepFields] = useState([]);
 
@@ -512,7 +510,7 @@ export default function FormBuilder() {
   const [dragActiveFieldType, setDragActiveFieldType] = useState(null);
 
   const sensors = useSensors(
-    useSensor(TouchSensor), 
+    useSensor(TouchSensor),
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
@@ -599,17 +597,17 @@ export default function FormBuilder() {
     //   stepName: stepName || `Step ${rest.step || 1}`,
     // }));
 
-     const normalizedFields = fields.map((field) => {
-    const { validation = {},required, stepName, ...rest } = field;
-    return {
-      ...rest,
-      validation: {
-        ...validation, // Also keep in validation if needed
-        required: required ?? false,
-      },
+    const normalizedFields = fields.map((field) => {
+      const { validation = {}, required, stepName, ...rest } = field;
+      return {
+        ...rest,
+        validation: {
+          ...validation, // Also keep in validation if needed
+          required: required ?? false,
+        },
         stepName: stepName || `Step ${field.step || 1}`,
-    };
-  });
+      };
+    });
 
     const dataToSend = {
       formTitle: values.formTitle,
@@ -618,11 +616,11 @@ export default function FormBuilder() {
       fields: normalizedFields,
       created_by: 1
     };
-    
-    
+
+
     try {
       const response = await submitform(dataToSend);
-      
+
       if (response.statusCode == StatusCode.success) {
         const result = await response;
         showSnackbar(result.message, "success");
@@ -630,7 +628,7 @@ export default function FormBuilder() {
         resetFormAndState();
       } else {
         const errorData = await response;
-      showSnackbar(errorData.message, "error");
+        showSnackbar(errorData.message, "error");
         // toast.error(errorData.message || "Failed to save form.");
       }
     } catch (error) {
@@ -641,19 +639,19 @@ export default function FormBuilder() {
 
   // restet function 
   // Define the reset function
-const resetFormAndState = () => {
-  // Reset Formik form to initial values
-  formik.resetForm();
+  const resetFormAndState = () => {
+    // Reset Formik form to initial values
+    formik.resetForm();
 
-  // Reset your external states
-  setFields([]);
-  setFormTitle('');
-  setFormUrl('');
-  setFormType('single'); // or your default form type
-  setActiveStep(0);
-  setTotalSteps(1);
-  setStepNames([]);
-};
+    // Reset your external states
+    setFields([]);
+    setFormTitle('');
+    setFormUrl('');
+    setFormType('single'); // or your default form type
+    setActiveStep(0);
+    setTotalSteps(1);
+    setStepNames([]);
+  };
 
   // Sync filtered fields when fields or activeStep change
   useEffect(() => {
@@ -781,6 +779,7 @@ const resetFormAndState = () => {
 
   return (
     <>
+     <h1 className="text-3xl font-bold text-center mb-8">FORM BUILDER</h1>
       <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col lg:flex-row gap-6 w-full">
           {/* Form Preview */}
@@ -818,9 +817,8 @@ const resetFormAndState = () => {
                 />
                 <label
                   htmlFor="single"
-                  className={`cursor-pointer border-1 rounded-lg p-4 flex gap-3 items-center ${
-                    formik.values.formType === 'single' ? 'border-black' : 'border-gray-300 hover:border-gray-500'
-                  }`}
+                  className={`cursor-pointer border-1 rounded-lg p-4 flex gap-3 items-center ${formik.values.formType === 'single' ? 'border-black' : 'border-gray-300 hover:border-gray-500'
+                    }`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -862,9 +860,8 @@ const resetFormAndState = () => {
                 />
                 <label
                   htmlFor="stepper"
-                  className={`cursor-pointer border-1 rounded-lg p-4 flex gap-3 items-center ${
-                    formik.values.formType === 'stepper' ? 'border-black' : 'border-gray-300 hover:border-gray-500'
-                  }`}
+                  className={`cursor-pointer border-1 rounded-lg p-4 flex gap-3 items-center ${formik.values.formType === 'stepper' ? 'border-black' : 'border-gray-300 hover:border-gray-500'
+                    }`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -905,9 +902,8 @@ const resetFormAndState = () => {
                 setFormTitle(e.target.value);
               }}
               onBlur={formik.handleBlur}
-              className={`w-full border-1 px-3 py-2 rounded-md mb-2 ${
-                formik.touched.formTitle && formik.errors.formTitle ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full border-1 px-3 py-2 rounded-md mb-2 ${formik.touched.formTitle && formik.errors.formTitle ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Enter form title"
             />
             {formik.touched.formTitle && formik.errors.formTitle && (
@@ -928,9 +924,8 @@ const resetFormAndState = () => {
                 setFormUrl(value);
               }}
               onBlur={formik.handleBlur}
-              className={`w-full border-1 px-3 py-2 rounded-md mb-2 ${
-                formik.touched.formUrl && formik.errors.formUrl ? 'border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full border-1 px-3 py-2 rounded-md mb-2 ${formik.touched.formUrl && formik.errors.formUrl ? 'border-red-500' : 'border-gray-300'
+                }`}
               placeholder="enter-form-url"
             />
             {formik.touched.formUrl && formik.errors.formUrl && (
@@ -954,7 +949,7 @@ const resetFormAndState = () => {
                           setStepNames(newStepNames);
                           formik.setFieldValue('totalSteps', newTotalSteps);
                           formik.setFieldValue('stepNames', newStepNames);
-                          
+
                           // Update fields' step if needed
                           setFields((prevFields) =>
                             prevFields.map((field) => {
@@ -964,7 +959,7 @@ const resetFormAndState = () => {
                               return field;
                             })
                           );
-                          
+
                           // Make sure activeStep is valid
                           if (activeStep > newTotalSteps) {
                             setActiveStep(newTotalSteps);
@@ -1043,11 +1038,10 @@ const resetFormAndState = () => {
                 <div className="flex border-b">
                   <button
                     type="button"
-                    className={`py-2 px-4 text-sm ${
-                      activeStep === 0
+                    className={`py-2 px-4 text-sm ${activeStep === 0
                         ? 'border-b-2 border-black font-medium'
                         : 'text-gray-500'
-                    }`}
+                      }`}
                     onClick={() => setActiveStep(0)}
                   >
                     All Fields
@@ -1056,11 +1050,10 @@ const resetFormAndState = () => {
                     <button
                       key={index}
                       type="button"
-                      className={`py-2 px-4 text-sm ${
-                        activeStep === index + 1
+                      className={`py-2 px-4 text-sm ${activeStep === index + 1
                           ? 'border-b-2 border-black font-medium'
                           : 'text-gray-500'
-                      }`}
+                        }`}
                       onClick={() => setActiveStep(index + 1)}
                     >
                       Step {index + 1}
@@ -1069,12 +1062,20 @@ const resetFormAndState = () => {
                 </div>
               </div>
             )}
-
-            {/* Fields List with Drag and Drop */}
-            {/* <div
+            <div
               className="border-1 rounded-md p-4 text-sm text-gray-700 min-h-[200px]"
               onDrop={handleDrop}
               onDragOver={handleDragOver}
+              onTouchEnd={() => {
+                // Handle mobile drop
+                if (dragActiveFieldType) {
+                  const newField = createNewField(dragActiveFieldType);
+                  const updatedFields = [...fields, newField];
+                  setFields(updatedFields);
+                  formik.setFieldValue('fields', updatedFields);
+                  setDragActiveFieldType(null);
+                }
+              }}
             >
               {fields.length === 0 && (
                 <div className="flex flex-col items-center justify-center h-32 text-gray-500 border-2 border-dashed rounded-lg">
@@ -1089,81 +1090,29 @@ const resetFormAndState = () => {
                 onDragEnd={handleDragEnd}
                 modifiers={[restrictToVerticalAxis]}
               >
-              <div className="touch-none">
-                <SortableContext
-                  items={getFieldsForCurrentStep().map((f) => f.id)}
-                  strategy={verticalListSortingStrategy}
-                >
-                  {getFieldsForCurrentStep().map((field, idx) => (
-                    <SortableField
-                      key={field.id}
-                      field={field}
-                      index={idx}
-                      updateField={updateField}
-                      removeField={removeField}
-                      formType={formType}
-                      totalSteps={totalSteps}
-                      stepNames={stepNames}
-                      // Pass validation errors for individual fields
-                      errors={formik.errors.fields && formik.errors.fields[idx]}
-                      touched={formik.touched.fields && formik.touched.fields[idx]}
-                    />
-                  ))}
-                </SortableContext>
+                <div className="touch-none">
+                  <SortableContext
+                    items={getFieldsForCurrentStep().map((f) => f.id)}
+                    strategy={verticalListSortingStrategy}
+                  >
+                    {getFieldsForCurrentStep().map((field, idx) => (
+                      <SortableField
+                        key={field.id}
+                        field={field}
+                        index={idx}
+                        updateField={updateField}
+                        removeField={removeField}
+                        formType={formType}
+                        totalSteps={totalSteps}
+                        stepNames={stepNames}
+                        errors={formik.errors.fields && formik.errors.fields[idx]}
+                        touched={formik.touched.fields && formik.touched.fields[idx]}
+                      />
+                    ))}
+                  </SortableContext>
                 </div>
               </DndContext>
-            </div> */}
-            <div
-  className="border-1 rounded-md p-4 text-sm text-gray-700 min-h-[200px]"
-  onDrop={handleDrop}
-  onDragOver={handleDragOver}
-  onTouchEnd={() => {
-    // Handle mobile drop
-    if (dragActiveFieldType) {
-      const newField = createNewField(dragActiveFieldType);
-      const updatedFields = [...fields, newField];
-      setFields(updatedFields);
-      formik.setFieldValue('fields', updatedFields);
-      setDragActiveFieldType(null);
-    }
-  }}
->
-  {fields.length === 0 && (
-    <div className="flex flex-col items-center justify-center h-32 text-gray-500 border-2 border-dashed rounded-lg">
-      <p>Drag and drop fields here or click "Add Field"</p>
-    </div>
-  )}
-
-  <DndContext
-    sensors={sensors}
-    collisionDetection={closestCenter}
-    onDragStart={(event) => setActiveId(event.active.id)}
-    onDragEnd={handleDragEnd}
-    modifiers={[restrictToVerticalAxis]}
-  >
-    <div className="touch-none">
-      <SortableContext
-        items={getFieldsForCurrentStep().map((f) => f.id)}
-        strategy={verticalListSortingStrategy}
-      >
-        {getFieldsForCurrentStep().map((field, idx) => (
-          <SortableField
-            key={field.id}
-            field={field}
-            index={idx}
-            updateField={updateField}
-            removeField={removeField}
-            formType={formType}
-            totalSteps={totalSteps}
-            stepNames={stepNames}
-            errors={formik.errors.fields && formik.errors.fields[idx]}
-            touched={formik.touched.fields && formik.touched.fields[idx]}
-          />
-        ))}
-      </SortableContext>
-    </div>
-  </DndContext>
-</div>
+            </div>
 
           </div>
 
