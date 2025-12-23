@@ -65,7 +65,7 @@ const TopMenu = () => {
               </li>
 
               {/* Mobile View Login Button */}
-              <li className="block lg:!hidden">
+              {/* <li className="block lg:!hidden">
                 <div className="space-y-1 mt-4 ml-3 mb-2" style={{ width: "90%" }}>
                   <Button
                     variant="contained"
@@ -77,12 +77,12 @@ const TopMenu = () => {
                     Login
                   </Button>
                 </div>
-              </li>
+              </li> */}
             </ul>
 
             {/* Desktop View Login Button */}
             <ul className="hidden lg:flex space-x-4 items-center z-10">
-              <li className="relative">
+              {/* <li className="relative">
                 <Button
                   variant="contained"
                   color="success"
@@ -92,7 +92,7 @@ const TopMenu = () => {
                 >
                   Login
                 </Button>
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>
